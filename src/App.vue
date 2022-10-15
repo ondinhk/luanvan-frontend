@@ -1,16 +1,23 @@
 <template>
-  <div id="app">
-    <Header_ msg="Welcome to Your Vue.js App" />
+
+  <div id="wrapper">
+    <!-- Main -->
+    <Main_ />
+    <!-- Sidebar -->
+    <Slider_ />
   </div>
+
 </template>
 
 <script>
-import Header_ from './components/Header_.vue'
+import Slider_ from './components/Slider_.vue'
+import Main_ from './components/Main_.vue'
 
 export default {
   name: 'App',
   components: {
-    Header_,
+    Slider_,
+    Main_,
   }
 }
 </script>
