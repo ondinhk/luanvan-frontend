@@ -1,12 +1,8 @@
 <template>
-
   <div id="wrapper">
-    <!-- Main -->
     <Main_ />
-    <!-- Sidebar -->
     <Slider_ />
   </div>
-
 </template>
 
 <script>
@@ -21,7 +17,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

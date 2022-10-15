@@ -1,45 +1,10 @@
 <template>
     <div id="sidebar">
         <div class="inner">
-
-            <!-- Search -->
-            <section id="search" class="alt">
-                <form method="post" action="#">
-                    <input type="text" name="query" id="query" placeholder="Search" />
-                </form>
-            </section>
-
-            <!-- Menu -->
+            <Search_ />
             <Menu_ />
-
-            <!-- Section -->
-            <section>
-                <header class="major">
-                    <h2>Ante interdum</h2>
-                </header>
-                <div class="mini-posts">
-                    <article>
-                        <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                    </article>
-                    <article>
-                        <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                    </article>
-                    <article>
-                        <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                    </article>
-                </div>
-                <ul class="actions">
-                    <li><a href="#" class="button">More</a></li>
-                </ul>
-            </section>
-
-            <!-- Section -->
+            <Recommend_ />
             <Info_ />
-
-            <!-- Footer -->
             <Footer_ />
         </div>
     </div>
@@ -49,6 +14,8 @@
 import Info_ from './Sidebar/Info_.vue';
 import Footer_ from './Main/Footer_.vue';
 import Menu_ from './Sidebar/Menu_.vue';
+import Search_ from './Sidebar/Search_.vue';
+import Recommend_ from './Sidebar/Recommend_.vue';
 export default {
     name: "Slider_",
     data() {
@@ -57,11 +24,6 @@ export default {
     computed: {},
     mounted() { },
     methods: {},
-    components: { Info_, Footer_, Menu_ }
+    components: { Info_, Footer_, Menu_, Search_, Recommend_ }
 }
 </script>
-  
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-
-</style>
