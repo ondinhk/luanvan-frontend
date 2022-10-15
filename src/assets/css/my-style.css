@@ -1,0 +1,39 @@
+.fill {
+    object-fit: fill !important;
+}
+
+.contain {
+    object-fit: contain;
+}
+
+.cover {
+    object-fit: cover;
+}
+
+.scale-down {
+    object-fit: scale-down;
+}
+
+.none {
+    object-fit: none;
+}
+
+.images-type-location {
+    border-radius: 20px;
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    padding: 2px;
+    margin-right: 20px;
+}
+
+.content-type-location {
+    height: 250px;
+    margin-bottom: 30px;
+}
+
+.image-item {
+    width: 320px !important;
+    height: 250px;
+    object-fit: fill;
+}
