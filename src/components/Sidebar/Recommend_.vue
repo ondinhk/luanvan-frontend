@@ -1,7 +1,7 @@
 <template>
     <section>
         <header class="major">
-            <h2>Ante interdum</h2>
+            <h2>Recommend</h2>
         </header>
         <div class="mini-posts">
             <article>

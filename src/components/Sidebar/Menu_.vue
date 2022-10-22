@@ -4,16 +4,19 @@
             <h2>Menu</h2>
         </header>
         <ul>
-            <li><a href="index.html">Homepage</a></li>
-            <li><a href="generic.html">Google Map</a></li>
-            <li><a href="elements.html">Search</a></li>
             <li>
-                <span class="opener">Explore Vietnam</span>
+                <router-link to="/">Trang chủ</router-link>
+            </li>
+            <li><a href="generic.html">Google Map</a></li>
+            <li><a href="elements.html">Tìm kiếm</a></li>
+            <li>
+                <span class="opener" :class="{ active:isActive }" @click="isActive = !isActive">Khu vực</span>
                 <ul>
-                    <li><a href="#">Da Lat</a></li>
-                    <li><a href="#">Ipsum Adipiscing</a></li>
-                    <li><a href="#">Tempus Magna</a></li>
-                    <li><a href="#">Feugiat Veroeros</a></li>
+                    <li v-for="item in locations" v-bind:key="item.id">
+                        <router-link :to="{ path: '/location', query: { idLocation: item.idLocation}}">
+                            {{ item.name }}
+                        </router-link>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -24,10 +27,10 @@
 export default {
     name: 'Menu_',
     data() {
-        return {}
+        return {
+            isActive: false
+        }
     },
-    computed: {},
-    mounted() { },
-    methods: {}
+    props: ['locations']
 }
 </script>

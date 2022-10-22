@@ -64,17 +64,18 @@
                 </ul>
             </article>
         </div>
+
     </section>
 </template>
   
 <script>
 export default {
-    name: 'Content_',
+    name: "Content_",
     data() {
-        return {}
+        return {};
     },
     computed: {},
     mounted() { },
-    methods: {}
+    methods: {},
 }
 </script>
