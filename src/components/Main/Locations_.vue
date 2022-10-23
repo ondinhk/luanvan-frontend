@@ -7,9 +7,11 @@
             <div class="d-flex flex-column justify-content-center align-items-center" v-for="item in locations"
                 v-bind:key="item.id">
                 <b-img v-bind="mainProps" rounded="circle" alt="Circle image" :src="item.image"></b-img>
-                <a href="" class="name_locations">
-                    <h3>{{ item.name }}</h3>
-                </a>
+                <router-link class="name_locations"
+                    :to="{ name:'Page_Location', params:{path: 'location'}, query: {idLocation: item.idLocation}}"
+                    @click.native="$scrollToTop">
+                    <h3> {{ item.name }}</h3>
+                </router-link>
             </div>
         </div>
     </section>

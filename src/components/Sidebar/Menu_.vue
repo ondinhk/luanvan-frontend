@@ -13,7 +13,8 @@
                 <span class="opener" :class="{ active:isActive }" @click="isActive = !isActive">Khu vực</span>
                 <ul>
                     <li v-for="item in locations" v-bind:key="item.id">
-                        <router-link :to="{ path: '/location', query: { idLocation: item.idLocation}}">
+                        <router-link
+                            :to="{ name:'Page_Location', params:{path: 'location'}, query: {idLocation: item.idLocation}}">
                             {{ item.name }}
                         </router-link>
                     </li>
@@ -34,3 +35,8 @@ export default {
     props: ['locations']
 }
 </script>
+<style>
+.active_link {
+    color: red;
+}
+</style>

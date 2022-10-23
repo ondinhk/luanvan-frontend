@@ -1,17 +1,28 @@
 <template>
     <div>
-        <Banner_ />
-        <Des_Location_ />
+        <Des_Location_ :idLocation=idLocation />
         <Content_ />
     </div>
 </template>
   
 <script>
-import Des_Location_ from '@/components/Pages/Des_Location_.vue';
-import Content_ from '@/components/Main/Content_.vue';
-import Banner_ from '@/components/Main/Banner_.vue';
+import Des_Location_ from '../components/Pages/Des_Location_.vue';
+import Content_ from '../components/Main/Content_.vue';
 export default {
     name: "Page_Location",
-    components: { Des_Location_, Content_, Banner_ }
+    data() {
+        return {
+            idLocation: this.$route.query.idLocation
+        }
+    },
+    components: { Des_Location_, Content_ },
+    mounted() {
+        this.scrollToTop()
+    },
+    watch: {
+        $route() {
+            this.scrollToTop()
+        }
+    }
 }
 </script>

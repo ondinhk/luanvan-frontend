@@ -17,6 +17,11 @@ export default {
             currentPage: 1,
             per_page: 10,
         }
+    },
+    methods: {
+        updatePerPage() {
+            this.$emit('updatePerPage')
+        }
     }
 }
 </script>

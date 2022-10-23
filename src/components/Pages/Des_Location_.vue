@@ -1,21 +1,46 @@
 <template>
-    <div>
-        <header class="main">
-            <h1>Generic</h1>
-        </header>
-        <span class="image main"><img src="images/pic11.jpg" alt="" /></span>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
-            venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim
-            auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque
-            in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar
-            mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque
-            enim turpis, hendrerit.</p>
-    </div>
+    <section id="banner">
+        <span class="image object">
+            <img :src="this.location.image" alt="" />
+        </span>
+        <div class="content">
+            <header>
+                <h1>{{ this.location.name }}</h1>
+                <p>VIETNAM</p>
+            </header>
+            <p>{{ this.location.describe }}</p>
+            <ul class="actions">
+                <li><a href="#" class="button big">Learn More</a></li>
+            </ul>
+        </div>
+
+    </section>
 </template>
   
 <script>
+import axios from 'axios'
 export default {
+    props: ['idLocation'],
     name: 'describe_location',
+    data() {
+        return {
+            location: []
+        }
+    },
+    mounted() {
+        this.getLocation()
+    },
+    methods: {
+        async getLocation() {
+            await axios
+                .get("http://127.0.0.1:8090/api/getLocation?idLocation=" + this.idLocation)
+                .then(response => {
+                    this.info = response;
+                    this.location = this.info.data;
+                    console.log(this.location)
+                });
+        }
+    }
 
 }
 </script>

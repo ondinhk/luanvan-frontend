@@ -12,7 +12,7 @@ const routes = [
         component: Main_
     },
     {
-        path: '/location?:idLocation',
+        path: '/:path',
         name: 'Page_Location',
         component: Page_Location
     }

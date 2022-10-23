@@ -9,18 +9,20 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './assets/css/main.css'
 import './assets/css/my-style.css'
 
-// Import Compoents
-// import Main_ from './components/Main_.vue'
-
 // Use dependencies
-// Vue.use(BootstrapVue)
-// Vue.use(IconsPlugin)
-// Vue.use(router)
-
-
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+Vue.use(router)
+Vue.mixin({
+  methods: {
+    scrollToTop: function () {
+      window.scrollTo(0, 0)
+    },
+  },
+})
 new Vue({
-  render: h => h(App),
   router,
   BootstrapVue,
-  IconsPlugin
+  IconsPlugin,
+  render: h => h(App),
 }).$mount('#app')
