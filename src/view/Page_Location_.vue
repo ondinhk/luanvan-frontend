@@ -1,13 +1,13 @@
 <template>
     <div>
         <Des_Location_ :idLocation=idLocation />
-        <Content_ />
+        <Content_Location_ :idLocation=idLocation />
     </div>
 </template>
   
 <script>
 import Des_Location_ from '../components/Pages/Des_Location_.vue';
-import Content_ from '../components/Main/Content_.vue';
+import Content_Location_ from '../components/Pages/Content_Location_.vue';
 export default {
     name: "Page_Location",
     data() {
@@ -15,7 +15,7 @@ export default {
             idLocation: this.$route.query.idLocation
         }
     },
-    components: { Des_Location_, Content_ },
+    components: { Des_Location_, Content_Location_ },
     mounted() {
         this.scrollToTop()
     },

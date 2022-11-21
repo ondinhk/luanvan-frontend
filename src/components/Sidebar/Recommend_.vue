@@ -4,33 +4,63 @@
             <h2>Recommend</h2>
         </header>
         <div class="mini-posts">
-            <article>
-                <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-            </article>
-            <article>
-                <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-            </article>
-            <article>
-                <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            <article v-for="item in infoHotels" v-bind:key="item.id">
+                <router-link class="image"
+                    :to="{ name: 'Single_Page', params: { path: 'hotel' }, query: { idHotel: item.id } }">
+                    <img :src="item.images[0]" alt="" />
+                </router-link>
+                <p><strong>{{ item.name }} &nbsp;&nbsp; </strong>
+                    <span class="text-success">
+                        {{ new Intl.NumberFormat('vi-VN', {
+                                style: 'currency', currency: 'VND'
+                            }).format(item.costOriginal)
+                        }}
+                    </span>
+                </p>
+                <p>{{ item.address }}</p>
             </article>
         </div>
-        <ul class="actions">
-            <li><a href="#" class="button">More</a></li>
-        </ul>
     </section>
 </template>
   
 <script>
+import axios from 'axios'
 export default {
     name: 'Recomend_',
     data() {
-        return {}
+        return {
+            total: 0,
+            currentPage: 1,
+            size: 5,
+            linkApi: "http://127.0.0.1:8090/api/hotel/getAllHotels?",
+            data: [],
+            infoHotels: [],
+        }
     },
     computed: {},
-    mounted() { },
-    methods: {}
+    mounted() {
+        this.getListHotels()
+    },
+    methods: {
+        async getListHotels() {
+            await axios
+                .get(this.linkApi + "page=" + this.currentPage + "&" + "size=" + this.size)
+                .then(response => {
+                    this.info = response;
+                    this.data = this.info.data;
+                    this.total = this.data.totalElements
+                    this.infoHotels = this.data.content
+                });
+        }
+    }
 }
 </script>
+<style>
+.fixed-content {
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+</style>

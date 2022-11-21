@@ -2,7 +2,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main_ from '../view/Main_.vue'
-import Page_Location from '../view/Page_Location_.vue'
+import Page_Location_ from '../view/Page_Location_.vue'
+import Single_Page_ from '../view/Single_Page_.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -12,9 +13,14 @@ const routes = [
         component: Main_
     },
     {
-        path: '/:path',
+        path: '/location',
         name: 'Page_Location',
-        component: Page_Location
+        component: Page_Location_
+    },
+    {
+        path: '/hotel',
+        name: 'Single_Page',
+        component: Single_Page_
     }
     // {
     // 	path: '/about',

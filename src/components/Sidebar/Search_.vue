@@ -1,6 +1,6 @@
 <template>
     <section id="search" class="alt">
-        <form method="post" action="#">
+        <form method="post" action="#" autocomplete="off">
             <input type="text" name="query" id="query" placeholder="Search" />
         </form>
     </section>

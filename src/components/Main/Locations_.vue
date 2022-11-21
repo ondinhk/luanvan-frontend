@@ -1,14 +1,14 @@
 <template>
     <section>
         <header class="major">
-            <h2>Explore Vietnam</h2>
+            <h2>Các địa danh</h2>
         </header>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex flex-column justify-content-center align-items-center" v-for="item in locations"
-                v-bind:key="item.id">
+        <div class="d-flex justify-content-start row">
+            <div class="d-flex flex-column justify-content-center align-items-center col-3 mb-5"
+                v-for="item in locations" v-bind:key="item.id">
                 <b-img v-bind="mainProps" rounded="circle" alt="Circle image" :src="item.image"></b-img>
                 <router-link class="name_locations"
-                    :to="{ name:'Page_Location', params:{path: 'location'}, query: {idLocation: item.idLocation}}"
+                    :to="{ name: 'Page_Location', params: { path: 'location' }, query: { idLocation: item.idLocation } }"
                     @click.native="$scrollToTop">
                     <h3> {{ item.name }}</h3>
                 </router-link>

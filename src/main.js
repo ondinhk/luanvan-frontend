@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import router from './router'
-
+import VueCarousel from 'vue-carousel';
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -13,6 +13,7 @@ import './assets/css/my-style.css'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(router)
+Vue.use(VueCarousel);
 Vue.mixin({
   methods: {
     scrollToTop: function () {

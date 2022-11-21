@@ -2,7 +2,7 @@
     <section>
         <hr class="major" />
         <header class="major" id="the_most">
-            <h2>The Most</h2>
+            <h2>Hiện có {{ this.total }} khách sạn</h2>
         </header>
         <div class="posts">
             <!-- For item in DataAll -->
@@ -55,9 +55,10 @@
 
             </article>
         </div>
+        <!-- Paging -->
         <div class="overflow-auto">
             <div class="mt-3">
-                <b-pagination v-model="currentPage" :total-rows="rows" align="fill" :per-page="size" last-number>
+                <b-pagination v-model="currentPage" :total-rows="total" align="fill" :per-page="size" last-number>
                 </b-pagination>
             </div>
         </div>
@@ -67,13 +68,14 @@
 <script>
 import axios from 'axios'
 export default {
-    name: "Content_",
+    props: ['idLocation'],
+    name: "Content_Location_",
     data() {
         return {
-            rows: 0,
+            total: 0,
             currentPage: 1,
             size: 12,
-            linkApi: "http://127.0.0.1:8090/api/hotel/getAllHotels?",
+            linkApi: "http://127.0.0.1:8090/api/hotel/getAllHotelsByLocation?",
             data: [],
             infoHotels: [],
         }
@@ -85,11 +87,11 @@ export default {
     methods: {
         async getListHotels() {
             await axios
-                .get(this.linkApi + "page=" + this.currentPage + "&" + "size=" + this.size)
+                .get(this.linkApi + "page=" + this.currentPage + "&" + "size=" + this.size + "&" + "idLocation=" + this.idLocation)
                 .then(response => {
                     this.info = response;
                     this.data = this.info.data;
-                    this.rows = this.data.totalElements
+                    this.total = this.data.totalElements
                     this.infoHotels = this.data.content
                 });
         }
