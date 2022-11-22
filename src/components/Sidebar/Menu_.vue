@@ -8,7 +8,6 @@
                 <router-link to="/">Trang chủ</router-link>
             </li>
             <li><a href="generic.html">Google Map</a></li>
-            <li><a href="elements.html">Tìm kiếm</a></li>
             <li>
                 <span class="opener" :class="{ active: isActive }" @click="isActive = !isActive">Khu vực</span>
                 <ul>
@@ -29,7 +28,7 @@ export default {
     name: 'Menu_',
     data() {
         return {
-            isActive: false
+            isActive: true
         }
     },
     props: ['locations']

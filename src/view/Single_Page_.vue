@@ -26,13 +26,13 @@
       <!-- Describe -->
       <hr />
       <h2>Mô tả:
-        <strong :class="{ 'text-success': reviews.rate >= 8 & reviews.number_reviews >= 100 }">
-          {{ reviews.rate }} Điểm
+        <strong :class="{ 'text-success': this.data.rate >= 8 & this.data.number_reviews >= 100 }">
+          {{ this.data.rate }} Điểm
         </strong>
       </h2>
       <p>
-        <span :class="{ 'text-success': reviews.number_reviews >= 100 }">{{
-            reviews.number_reviews
+        <span :class="{ 'text-success': this.data.number_reviews >= 100 }">{{
+            this.data.number_reviews
         }} lượt đánh giá</span>
       </p>
       <p>{{ this.data.description }}</p>
@@ -50,7 +50,7 @@
       <h2>Địa điểm gần khách sạn</h2>
       <div>
         <div class="d-flex row">
-          <div class="col-4 d-flex justify-content-between align-items-center mb-3" v-for="item in locations_around"
+          <div class="col-4 d-flex justify-content-between align-items-center mb-3" v-for="item in locationsDistance"
             v-bind:key="item.id">
             <div class="d-flex justify-content-between align-items-center">
               <strong>
@@ -98,7 +98,7 @@ export default {
       idHotel: this.$route.query.idHotel,
       data: [],
       facility: [],
-      locations_around: [],
+      locationsDistance: [],
       images: [],
       reviews: []
     }
@@ -114,9 +114,8 @@ export default {
         .then(response => {
           this.data = response.data;
           this.facility = this.data.facility
-          this.locations_around = this.data.locationAround
+          this.locationsDistance = this.data.locationsDistance
           this.images = this.data.images
-          this.reviews = this.data.reviews
           window.scrollTo(0, 0);
         });
     },

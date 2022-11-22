@@ -4,13 +4,13 @@
             <header>
                 <h1>Recommend Hotels<br />
                     in Viet Nam</h1>
-                <p>VIETNAM - HANOI TO HALONG</p>
+                <p>VIETNAM - HALONG</p>
             </header>
-            <p>Take in two of Vietnam’s most treasured spots. Get your fill of culture and history in Hanoi
-                with its wonderful museums, Old Quarter and pockets of nostalgia. Then explore enchanting
-                caves and swim from secluded beaches in Halong Bay.</p>
+            <p>Hạ Long là thành phố tỉnh lỵ của tỉnh Quảng Ninh, Việt Nam. Thành phố được đặt theo tên của vịnh Hạ Long,
+                vịnh biển nằm ở phía nam thành phố và là một di sản thiên nhiên nổi tiếng của Việt Nam. Tên "Hạ Long"
+                nghĩa là "con rồng bay xuống"..</p>
             <ul class="actions">
-                <li><a href="#" class="button big">Learn More</a></li>
+                <li><a href="/location?idLocation=6" class="button big">Learn More</a></li>
             </ul>
         </div>
         <span class="image object">

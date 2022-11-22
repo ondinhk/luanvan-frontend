@@ -2,8 +2,9 @@
     <div id="sidebar" :class="{ 'inactive': open_silder === false }">
         <div class="inner">
             <!-- <Search_ /> -->
+            <!-- <Search_ /> -->
             <Menu_ :locations=this.locations />
-            <Recommend_ />
+            <Recommend_ v-show="this.$route.query.recommend" :key="this.open_recommends" />
             <Info_ />
             <Footer_ />
         </div>
@@ -16,6 +17,7 @@ import Info_ from './Sidebar/Info_.vue';
 import Footer_ from './Main/Footer_.vue';
 import Menu_ from './Sidebar/Menu_.vue';
 import Recommend_ from './Sidebar/Recommend_.vue';
+// import Search_ from './Sidebar/Search_.vue'
 import axios from 'axios'
 
 export default {
@@ -24,11 +26,16 @@ export default {
         return {
             locations: [],
             open_silder: true,
+            open_recommends: false,
         }
     },
     components: { Info_, Footer_, Menu_, Recommend_ },
     mounted() {
         this.getLocations()
+    },
+    beforeUpdate() {
+        this.open_recommends = this.$route.query.recommend
+        console.log(this.open_recommends)
     },
     methods: {
         async getLocations() {
