@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Main_ from '../view/Main_.vue'
 import Page_Location_ from '../view/Page_Location_.vue'
 import Single_Page_ from '../view/Single_Page_.vue'
+import Search_Page from '../view/Search_Page.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,6 +22,11 @@ const routes = [
         path: '/hotel',
         name: 'Single_Page',
         component: Single_Page_
+    },
+    {
+        path: '/search',
+        name: 'Search_Page',
+        component: Search_Page
     }
     // {
     // 	path: '/about',

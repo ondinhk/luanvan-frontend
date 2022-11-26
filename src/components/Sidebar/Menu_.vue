@@ -8,6 +8,7 @@
                 <router-link to="/">Trang chủ</router-link>
             </li>
             <li><a href="generic.html">Google Map</a></li>
+            <li><a href="/search">Tìm kiếm</a></li>
             <li>
                 <span class="opener" :class="{ active: isActive }" @click="isActive = !isActive">Khu vực</span>
                 <ul>

@@ -35,7 +35,6 @@ export default {
     },
     beforeUpdate() {
         this.open_recommends = this.$route.query.recommend
-        console.log(this.open_recommends)
     },
     methods: {
         async getLocations() {

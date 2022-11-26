@@ -1,6 +1,6 @@
 <template>
   <header id="header">
-    <Search_ />
+    <!-- <Search_ /> -->
     <ul class="icons">
       <li><a href="#" class="icon brands fa-twitter name_locations"><span class="label">Twitter</span></a></li>
       <li><a href="#" class="icon brands fa-facebook-f name_locations"><span class="label">Facebook</span></a></li>
@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import Search_ from '../Sidebar/Search_.vue';
+// import Search_ from '../Sidebar/Search_.vue';
 
 export default {
   name: "Header_",
   props: {
     msg: String
   },
-  components: { Search_ }
+  // components: { Search_ }
 }
 </script>
