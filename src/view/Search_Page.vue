@@ -13,7 +13,9 @@ export default {
         return {};
     },
     computed: {},
-    mounted() { },
+    mounted() {
+        document.title = "Tìm kiếm"
+    },
     methods: {},
     components: { Search_ }
 }

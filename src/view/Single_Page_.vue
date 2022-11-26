@@ -113,9 +113,10 @@ export default {
         .get("http://127.0.0.1:8090/api/hotel/getHotel?idHotel=" + this.idHotel)
         .then(response => {
           this.data = response.data;
-          this.facility = this.data.facility
-          this.locationsDistance = this.data.locationsDistance
-          this.images = this.data.images
+          this.facility = response.data.facility
+          this.locationsDistance = response.data.locationsDistance
+          this.images = response.data.images
+          document.title = response.data.name
           window.scrollTo(0, 0);
         });
     },

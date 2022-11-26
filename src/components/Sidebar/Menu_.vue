@@ -14,7 +14,7 @@
                 <ul>
                     <li v-for="item in locations" v-bind:key="item.id">
                         <router-link
-                            :to="{ name: 'Page_Location', params: { path: 'location' }, query: { idLocation: item.idLocation } }">
+                            :to="{ name: 'Page_Location', params: { path: 'location' }, query: { idLocation: item.idLocation, filter: true } }">
                             {{ item.name }}
                         </router-link>
                     </li>
@@ -32,7 +32,22 @@ export default {
             isActive: true
         }
     },
-    props: ['locations']
+    props: ['locations'],
+    watch: {
+        '$route.query.idHotel': {
+            handler: function () {
+                this.isActive = false
+            }
+        },
+        '$route.query.recommend': {
+            handler: function () {
+                let recommend = this.$route.query.recommend
+                if (typeof recommend === "undefined") {
+                    this.isActive = true
+                }
+            }
+        }
+    }
 }
 </script>
 <style>

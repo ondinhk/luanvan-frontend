@@ -20,6 +20,7 @@ export default {
         }
     },
     mounted() {
+        document.title = "Trang chủ"
         this.getLocations()
     },
     methods: {
@@ -27,8 +28,7 @@ export default {
             await axios
                 .get("http://127.0.0.1:8090/api/location/getAllLocations")
                 .then(response => {
-                    this.info = response;
-                    this.locations = this.info.data;
+                    this.locations = response.data;
                 });
         }
     }

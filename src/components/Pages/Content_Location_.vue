@@ -2,8 +2,29 @@
     <section>
         <hr class="major" />
         <header class="major" id="the_most">
-            <h2>Hiện có {{ this.total }} khách sạn</h2>
+            <h2 class="mb-4">Hiện có {{ this.total }} khách sạn</h2>
         </header>
+        <section>
+            <div class="container">
+                <b-form-group label="" v-slot="{ ariaDescribedby }">
+                    <div class="d-flex align-items-center mb-5">
+                        <h3 class="mb-4 me-5">Sắp xếp theo:</h3>
+                        <div>
+                            <div class="d-flex">
+                                <b-form-radio class="me-3" v-model="filterCommend" :aria-describedby="ariaDescribedby"
+                                    name="filterRate" value="maxComment">
+                                    <p class="h6 mt-1">Bình luận nhiều nhất</p>
+                                </b-form-radio>
+                                <b-form-radio class="me-3" v-model="filterCommend" :aria-describedby="ariaDescribedby"
+                                    name="filterRate" value="maxRate">
+                                    <p class="h6 mt-1">Điểm đánh giá cao nhất</p>
+                                </b-form-radio>
+                            </div>
+                        </div>
+                    </div>
+                </b-form-group>
+            </div>
+        </section>
         <div class="posts">
             <!-- For item in DataAll -->
             <article v-for="item in infoHotels" v-bind:key="item.id">
@@ -77,16 +98,16 @@ export default {
             linkApi: "http://127.0.0.1:8090/api/hotel/getAllHotelsByLocation?",
             data: [],
             infoHotels: [],
+            filterCommend: "maxComment",
         }
     },
-    computed: {},
     mounted() {
         this.getListHotels()
     },
     methods: {
         async getListHotels() {
             await axios
-                .get(this.linkApi + "page=" + this.currentPage + "&" + "size=" + this.size + "&" + "idLocation=" + this.idLocation)
+                .get(this.linkApi + "page=" + this.currentPage + "&size=" + this.size + "&idLocation=" + this.idLocation + "&filterCommend=" + this.filterCommend)
                 .then(response => {
                     this.info = response;
                     this.data = this.info.data;
@@ -99,7 +120,15 @@ export default {
         currentPage() {
             this.getListHotels()
             document.getElementById("the_most").scrollIntoView()
+        },
+        filterCommend() {
+            this.getListHotels()
         }
     }
 }
 </script>
+<style>
+label {
+    margin-bottom: 0;
+}
+</style>

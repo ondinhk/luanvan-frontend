@@ -1,5 +1,5 @@
 <template>
-    <section id="banner">
+    <section id="banner" class="pb-0">
         <span class="image object">
             <img :src="this.location.image" alt="" />
         </span>
@@ -30,8 +30,8 @@ export default {
             await axios
                 .get("http://127.0.0.1:8090/api/location/getLocation?idLocation=" + this.idLocation)
                 .then(response => {
-                    this.info = response;
-                    this.location = this.info.data;
+                    this.location = response.data;
+                    document.title = this.location.name
                 });
         }
     }

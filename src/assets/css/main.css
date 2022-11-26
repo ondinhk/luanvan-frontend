@@ -3206,7 +3206,7 @@ button:disabled,
 }
 
 #sidebar>.inner {
-  padding: 2.22222em 2.22222em 2.44444em 2.22222em;
+  padding: 2.22222em 1em 2.44444em 2.22222em;
   position: relative;
   width: 26em;
 }

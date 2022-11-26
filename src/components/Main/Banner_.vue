@@ -10,7 +10,7 @@
                 vịnh biển nằm ở phía nam thành phố và là một di sản thiên nhiên nổi tiếng của Việt Nam. Tên "Hạ Long"
                 nghĩa là "con rồng bay xuống"..</p>
             <ul class="actions">
-                <li><a href="/location?idLocation=6" class="button big">Learn More</a></li>
+                <li><a href="/location?idLocation=6" class="button big">Xem thêm</a></li>
             </ul>
         </div>
         <span class="image object">

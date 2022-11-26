@@ -1,8 +1,4 @@
 <template>
-    <!-- <form method="post" action="#" autocomplete="off">
-            <input type="text" name="query" id="query" placeholder="Tìm kiếm" />
-
-        </form> -->
     <div class="mt-5">
         <b-form @submit="onSubmit">
             <h2>Bạn muốn tìm ?</h2>
@@ -11,8 +7,9 @@
             </b-form-input>
             <b-button id="button_submit" type="submit" variant="danger">Tìm kiếm</b-button>
         </b-form>
-        <h2 v-show="status == 200">Có {{ number_hotel }} khách sạn: {{ search }}</h2>
+        <h2 v-show="status == 200">Các kết quả gần giống nhất:</h2>
         <Search_Content :infoHotels=this.recommend v-show="status == 200" />
+        <button @click="map()"> Map</button>
     </div>
 </template>
   
@@ -24,12 +21,21 @@ export default {
     data() {
         return {
             search: "",
-            size: 22,
+            size: 13,
             isSearch: true,
             recommend: [],
             status: 404,
             number_hotel: 0,
             idLocation: '',
+            option: {
+                method: 'GET',
+                url: 'https://google-maps-geocoding.p.rapidapi.com/geocode/json',
+                params: { address: 'Số 10 Đường Phan Bội Châu, Phường 1, Thành phố Đà Lạt, Lâm Đồng, Việt Nam.', language: 'vi' },
+                headers: {
+                    'X-RapidAPI-Key': 'ddf8ccf95amsh44b86fdc10b47a8p1fe214jsnbc9761949c4f',
+                    'X-RapidAPI-Host': 'google-maps-geocoding.p.rapidapi.com'
+                }
+            }
         };
     },
     computed: {},
@@ -42,10 +48,12 @@ export default {
         async postSearch() {
             const input_user = { input: this.search, size: this.size, idLocation: this.idLocation };
             const response = await axios.post("http://127.0.0.1:8090/api/machines/recommend/", input_user);
-            console.log(response);
             this.recommend = response.data;
             this.status = response.status;
             this.number_hotel = this.recommend.length;
+        },
+        async map() {
+            await axios(this.option).then(res => console.log(res)).catch(err => console.log(err))
         }
     },
     components: { Search_Content },

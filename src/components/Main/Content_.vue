@@ -2,8 +2,9 @@
     <section>
         <hr class="major" />
         <header class="major" id="the_most">
-            <h2>The Most</h2>
+            <h2 class="mb-3">Danh sách phòng</h2>
         </header>
+        <h3 class="mb-5">Có {{ rows }} phòng trên hệ thống</h3>
         <div class="posts">
             <!-- For item in DataAll -->
             <article v-for="item in infoHotels" v-bind:key="item.id">
@@ -54,7 +55,7 @@
                 </div>
             </article>
         </div>
-        <div class=" overflow-auto">
+        <div class="overflow-auto">
             <div class="mt-3">
                 <b-pagination v-model="currentPage" :total-rows="rows" align="fill" :per-page="size" last-number>
                 </b-pagination>
@@ -75,6 +76,7 @@ export default {
             linkApi: "http://127.0.0.1:8090/api/hotel/getAllHotels?",
             data: [],
             infoHotels: [],
+            volume: 0
         }
     },
     computed: {},

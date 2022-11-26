@@ -8,7 +8,7 @@
                 v-for="item in locations" v-bind:key="item.id">
                 <b-img v-bind="mainProps" rounded="circle" alt="Circle image" :src="item.image"></b-img>
                 <router-link class="name_locations"
-                    :to="{ name: 'Page_Location', params: { path: 'location' }, query: { idLocation: item.idLocation } }"
+                    :to="{ name: 'Page_Location', params: { path: 'location' }, query: { idLocation: item.idLocation, filter: true } }"
                     @click.native="$scrollToTop">
                     <h3> {{ item.name }}</h3>
                 </router-link>
