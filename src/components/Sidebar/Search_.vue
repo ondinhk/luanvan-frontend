@@ -26,16 +26,7 @@ export default {
             recommend: [],
             status: 404,
             number_hotel: 0,
-            idLocation: '',
-            option: {
-                method: 'GET',
-                url: 'https://google-maps-geocoding.p.rapidapi.com/geocode/json',
-                params: { address: 'Số 10 Đường Phan Bội Châu, Phường 1, Thành phố Đà Lạt, Lâm Đồng, Việt Nam.', language: 'vi' },
-                headers: {
-                    'X-RapidAPI-Key': 'ddf8ccf95amsh44b86fdc10b47a8p1fe214jsnbc9761949c4f',
-                    'X-RapidAPI-Host': 'google-maps-geocoding.p.rapidapi.com'
-                }
-            }
+            idLocation: ''
         };
     },
     computed: {},
@@ -51,9 +42,6 @@ export default {
             this.recommend = response.data;
             this.status = response.status;
             this.number_hotel = this.recommend.length;
-        },
-        async map() {
-            await axios(this.option).then(res => console.log(res)).catch(err => console.log(err))
         }
     },
     components: { Search_Content },
