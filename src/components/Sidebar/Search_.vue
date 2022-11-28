@@ -29,8 +29,6 @@ export default {
             idLocation: ''
         };
     },
-    computed: {},
-    mounted() { },
     methods: {
         onSubmit(event) {
             event.preventDefault();

@@ -1,7 +1,7 @@
 <template>
     <section>
         <header class="major">
-            <h2>Recommend</h2>
+            <h2>Khách sạn tương tự</h2>
         </header>
         <MiniPost_ :infoHotels=this.infoHotels :key="this.idHotel" />
     </section>
@@ -52,14 +52,12 @@ export default {
             await axios.post("http://127.0.0.1:8090/api/machines/recommend/", input_user)
                 .then(response => {
                     this.infoHotels = response.data
-                    console.log(this.infoHotels)
                 });
         }
     },
     watch: {
         '$route.query.idHotel': {
             handler: function () {
-                console.log("Update new recommend")
                 this.getHotel()
             }
         }

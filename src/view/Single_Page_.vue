@@ -64,7 +64,7 @@
       </div>
       <hr class="major" />
       <h2>Vị trí trên bản đồ</h2>
-      <Map_ :location="locations" />
+      <Map_ v-if="flag" :location="location" />
       <hr class="major" />
     </section>
   </div>
@@ -76,6 +76,7 @@ import axios from 'axios'
 
 export default {
   name: "Singe_page_",
+  components: { Map_ },
   data() {
     return {
       idHotel: this.$route.query.idHotel,
@@ -84,19 +85,19 @@ export default {
       locationsDistance: [],
       images: [],
       reviews: [],
-      locations: [],
+      location: [],
       option: {
         method: 'GET',
         url: 'https://google-maps-geocoding.p.rapidapi.com/geocode/json',
-        params: { address: '', language: 'vi' },
+        params: { address: this.address, language: 'vi' },
         headers: {
           'X-RapidAPI-Key': 'ddf8ccf95amsh44b86fdc10b47a8p1fe214jsnbc9761949c4f',
           'X-RapidAPI-Host': 'google-maps-geocoding.p.rapidapi.com'
         }
-      }
-    };
+      },
+      flag: false
+    }
   },
-  computed: {},
   mounted() {
     this.getHotel();
   },
@@ -105,24 +106,25 @@ export default {
       await axios
         .get("http://127.0.0.1:8090/api/hotel/getHotel?idHotel=" + this.idHotel)
         .then(response => {
-          this.data = response.data;
-          this.facility = response.data.facility;
-          this.locationsDistance = response.data.locationsDistance;
-          this.images = response.data.images;
-          this.option.headers.params.address = response.data.address
-          document.title = response.data.name;
+          this.data = response.data
+          this.facility = response.data.facility
+          this.locationsDistance = response.data.locationsDistance
+          this.images = response.data.images
+          this.option.params.address = response.data.address
+          document.title = response.data.name
+          this.getLocation()
           window.scrollTo(0, 0);
         });
     },
-    async getLocation(address) {
-      await axios(this.option).
-        then(res => {
-
-        }).
-        catch(err => console.log(err))
+    async getLocation() {
+      await axios(this.option)
+        .then(res => {
+          this.location = res.data.results[0].geometry.location
+          this.flag = true
+        })
+        .catch(err => console.log(err))
     }
   },
-  components: { Map_ }
 }
 </script>
 <style>

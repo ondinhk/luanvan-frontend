@@ -19,6 +19,14 @@
                                     name="filterRate" value="maxRate">
                                     <p class="h6 mt-1">Điểm đánh giá cao nhất</p>
                                 </b-form-radio>
+                                <b-form-radio class="me-3" v-model="filterCommend" :aria-describedby="ariaDescribedby"
+                                    name="filterRate" value="minCost">
+                                    <p class="h6 mt-1">Giá tăng dần</p>
+                                </b-form-radio>
+                                <b-form-radio class="me-3" v-model="filterCommend" :aria-describedby="ariaDescribedby"
+                                    name="filterRate" value="maxCost">
+                                    <p class="h6 mt-1">Giá giảm dần</p>
+                                </b-form-radio>
                             </div>
                         </div>
                     </div>

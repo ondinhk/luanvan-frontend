@@ -1,5 +1,5 @@
 <template>
-    <l-map style="height: 700px" :zoom="zoom" :center="center">
+    <l-map style="height: 750px" :zoom="zoom" :center="center">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         <l-marker :lat-lng="markerLatLng"></l-marker>
     </l-map>
@@ -17,20 +17,28 @@ Icon.Default.mergeOptions({
 });
 export default {
     name: "Map_",
+    props: ['location'],
     components: {
         LMap,
         LTileLayer,
         LMarker
+    },
+    beforeMount() {
+    },
+    mounted() {
+        console.log(this.location)
     },
     data() {
         return {
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             attribution:
                 '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            zoom: 15,
-            center: [51.505, -0.159],
-            markerLatLng: [51.504, -0.159]
+            zoom: 20,
+            center: this.location,
+            markerLatLng: this.location,
         };
+    },
+    methods: {
     }
 }
 </script>
