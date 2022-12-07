@@ -1,7 +1,7 @@
 <template>
     <div>
         <Des_Location_ :idLocation=idLocation />
-        <Content_Location_ :idLocation=idLocation />
+        <Content_Location_ :idLocation=idLocation :size="12" />
     </div>
 </template>
   

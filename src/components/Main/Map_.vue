@@ -34,8 +34,8 @@ export default {
             attribution:
                 '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             zoom: 20,
-            center: this.location,
-            markerLatLng: this.location,
+            center: [this.location.lat, this.location.lng],
+            markerLatLng: [this.location.lat, this.location.lng]
         };
     },
     methods: {

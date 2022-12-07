@@ -9,7 +9,6 @@
         </b-form>
         <h2 v-show="status == 200">Các kết quả gần giống nhất:</h2>
         <Search_Content :infoHotels=this.recommend v-show="status == 200" />
-        <button @click="map()"> Map</button>
     </div>
 </template>
   

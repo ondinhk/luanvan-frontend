@@ -17,7 +17,7 @@ export default {
         return {
             recommend: false,
             isSearch: false,
-            size: 7,
+            size: 8,
             linkApi: "http://127.0.0.1:8090/api/hotel/getHotel",
             data: [],
             infoHotels: [],
@@ -49,6 +49,7 @@ export default {
         },
         async getRecommendHotels() {
             const input_user = { input: this.description, size: this.size, idLocation: this.idLocation };
+            console.log(input_user)
             await axios.post("http://127.0.0.1:8090/api/machines/recommend/", input_user)
                 .then(response => {
                     this.infoHotels = response.data

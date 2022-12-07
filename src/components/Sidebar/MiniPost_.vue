@@ -14,6 +14,23 @@
                         }}
                     </span>
                 </p>
+                <div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>Điểm: </h5>
+                        <p><strong :class="{ 'text-success': item.rate >= 8.0 & item.number_reviews >= 100 }">{{
+                                item.rate
+                        }}</strong>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>Số lượt: </h5>
+                        <p :class="{ 'text-success': item.rate >= 8.0 & item.number_reviews >= 100 }">{{
+                                item.number_reviews
+                        }} lượt đánh giá</p>
+                    </div>
+                </div>
                 <p>{{ item.address }}</p>
             </div>
         </article>

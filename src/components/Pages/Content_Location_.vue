@@ -2,7 +2,7 @@
     <section>
         <hr class="major" />
         <header class="major" id="the_most">
-            <h2 class="mb-4">Hiện có {{ this.total }} khách sạn</h2>
+            <h2 class="mb-4">Hiện có {{ this.total }} khách sạn trong khu vực</h2>
         </header>
         <section>
             <div class="container">
@@ -96,13 +96,12 @@
 <script>
 import axios from 'axios'
 export default {
-    props: ['idLocation'],
+    props: ['idLocation', 'size'],
     name: "Content_Location_",
     data() {
         return {
             total: 0,
             currentPage: 1,
-            size: 12,
             linkApi: "http://127.0.0.1:8090/api/hotel/getAllHotelsByLocation?",
             data: [],
             infoHotels: [],

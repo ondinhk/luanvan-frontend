@@ -66,17 +66,19 @@
       <h2>Vị trí trên bản đồ</h2>
       <Map_ v-if="flag" :location="location" />
       <hr class="major" />
+      <Content_Location_ :idLocation=idLocation :size=size />
     </section>
   </div>
 </template>
 
 <script>
 import Map_ from '@/components/Main/Map_.vue';
+import Content_Location_ from '@/components/Pages/Content_Location_.vue';
 import axios from 'axios'
 
 export default {
   name: "Singe_page_",
-  components: { Map_ },
+  components: { Map_, Content_Location_ },
   data() {
     return {
       idHotel: this.$route.query.idHotel,
@@ -86,6 +88,8 @@ export default {
       images: [],
       reviews: [],
       location: [],
+      idLocation: 0,
+      size: 3,
       option: {
         method: 'GET',
         url: 'https://google-maps-geocoding.p.rapidapi.com/geocode/json',
@@ -111,18 +115,12 @@ export default {
           this.locationsDistance = response.data.locationsDistance
           this.images = response.data.images
           this.option.params.address = response.data.address
+          this.location = response.data.geoCode
+          console.log(response.data.geoCode)
+          this.flag = true
           document.title = response.data.name
-          this.getLocation()
           window.scrollTo(0, 0);
         });
-    },
-    async getLocation() {
-      await axios(this.option)
-        .then(res => {
-          this.location = res.data.results[0].geometry.location
-          this.flag = true
-        })
-        .catch(err => console.log(err))
     }
   },
 }
