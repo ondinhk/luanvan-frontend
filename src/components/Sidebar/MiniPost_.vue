@@ -2,8 +2,10 @@
     <div class="mini-posts">
         <article v-for="item in infoHotels" v-bind:key="item.id">
             <div v-if="item.id != idHotel">
-                <router-link class="image"
-                    :to="{ name: 'Single_Page', params: { path: 'hotel' }, query: { idHotel: item.id, recommend: true } }">
+                <router-link class="image" :to="{
+                    name: 'Single_Page', params: { path: 'hotel' },
+                    query: { idHotel: item.id, recommend: true, recommendFor: recommendFor, isRecommend: true }
+                }">
                     <img :src="item.images[0]" alt="" />
                 </router-link>
                 <p><strong>{{ item.name }} &nbsp;&nbsp; </strong>
@@ -40,7 +42,7 @@
 <script>
 export default {
     name: 'MiniPost_',
-    props: ['infoHotels'],
+    props: ['infoHotels', 'recommendFor'],
     data() {
         return {
             idHotel: this.$route.query.idHotel

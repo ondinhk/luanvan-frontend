@@ -23,11 +23,6 @@ export default {
         LTileLayer,
         LMarker
     },
-    beforeMount() {
-    },
-    mounted() {
-        console.log(this.location)
-    },
     data() {
         return {
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -37,8 +32,6 @@ export default {
             center: [this.location.lat, this.location.lng],
             markerLatLng: [this.location.lat, this.location.lng]
         };
-    },
-    methods: {
     }
 }
 </script>

@@ -3,7 +3,7 @@
         <header class="major">
             <h2>Khách sạn tương tự</h2>
         </header>
-        <MiniPost_ :infoHotels=this.infoHotels :key="this.idHotel" />
+        <MiniPost_ :infoHotels=this.infoHotels :key="this.idHotel" :recommendFor="idHotel" />
     </section>
 </template>
   
@@ -23,7 +23,8 @@ export default {
             infoHotels: [],
             idHotel: this.$route.query.idHotel,
             description: "",
-            idLocation: ""
+            idLocation: "",
+            recommendFor: null,
         }
     },
     computed: {},
@@ -49,7 +50,6 @@ export default {
         },
         async getRecommendHotels() {
             const input_user = { input: this.description, size: this.size, idLocation: this.idLocation };
-            console.log(input_user)
             await axios.post("http://127.0.0.1:8090/api/machines/recommend/", input_user)
                 .then(response => {
                     this.infoHotels = response.data
