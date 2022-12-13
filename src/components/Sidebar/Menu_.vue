@@ -7,7 +7,11 @@
             <li>
                 <router-link to="/">Trang chủ</router-link>
             </li>
-            <li><a href="/search">Tìm kiếm</a></li>
+            <li>
+                <router-link :to="{ name: 'Search_Page', params: { path: 'search' } }">
+                    Tìm kiếm
+                </router-link>
+            </li>
             <li>
                 <span class="opener" :class="{ active: isActive }" @click="isActive = !isActive">Khu vực</span>
                 <ul>
